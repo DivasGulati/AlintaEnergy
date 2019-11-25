@@ -1,0 +1,54 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28803.452
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AlintaEnergy.Application", "Application\AlintaEnergy.Application.csproj", "{F8BA0F29-A54A-438A-B818-BABA6626EF3F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AlintaEnergy.Core", "Core\AlintaEnergy.Core.csproj", "{834495A3-8DCC-4E9A-A749-030037BE201B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AlintaEnergy.Infrastructure", "Infrastructure\AlintaEnergy.Infrastructure.csproj", "{03BB1483-DC28-427C-8262-E19CE9EA2D1D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AlintaEnergy.IntergrationTests", "Tests\AlintaEnergy.IntergrationTests.csproj", "{87F81E62-5B5F-42ED-9B6F-33AB5B089A70}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AlintaEnergy.API", "API\AlintaEnergy.API.csproj", "{BFFBCA8D-99C1-4F92-AF7D-2C2949CEB9EC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{07727D89-A1BB-4725-991B-A5D715206007}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F8BA0F29-A54A-438A-B818-BABA6626EF3F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F8BA0F29-A54A-438A-B818-BABA6626EF3F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F8BA0F29-A54A-438A-B818-BABA6626EF3F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F8BA0F29-A54A-438A-B818-BABA6626EF3F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{834495A3-8DCC-4E9A-A749-030037BE201B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{834495A3-8DCC-4E9A-A749-030037BE201B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{834495A3-8DCC-4E9A-A749-030037BE201B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{834495A3-8DCC-4E9A-A749-030037BE201B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{03BB1483-DC28-427C-8262-E19CE9EA2D1D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{03BB1483-DC28-427C-8262-E19CE9EA2D1D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{03BB1483-DC28-427C-8262-E19CE9EA2D1D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{03BB1483-DC28-427C-8262-E19CE9EA2D1D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{87F81E62-5B5F-42ED-9B6F-33AB5B089A70}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{87F81E62-5B5F-42ED-9B6F-33AB5B089A70}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{87F81E62-5B5F-42ED-9B6F-33AB5B089A70}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{87F81E62-5B5F-42ED-9B6F-33AB5B089A70}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BFFBCA8D-99C1-4F92-AF7D-2C2949CEB9EC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BFFBCA8D-99C1-4F92-AF7D-2C2949CEB9EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BFFBCA8D-99C1-4F92-AF7D-2C2949CEB9EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BFFBCA8D-99C1-4F92-AF7D-2C2949CEB9EC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{87F81E62-5B5F-42ED-9B6F-33AB5B089A70} = {07727D89-A1BB-4725-991B-A5D715206007}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {116DBD5E-41B9-45DA-BE79-90C75C8E9947}
+	EndGlobalSection
+EndGlobal
