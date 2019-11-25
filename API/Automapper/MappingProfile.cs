@@ -1,6 +1,7 @@
 ﻿using AlintaEnergy.Application.Dto;
 using AlintaEnergy.Core.DomainModel;
 using AutoMapper;
+using System.Linq;
 using EF = AlintaEnergy.Infrastructure.Model;
 
 namespace AlintaEnergy.API.Automapper
@@ -10,7 +11,7 @@ namespace AlintaEnergy.API.Automapper
         public MappingProfile()
         {
             // Add as many of these lines as you need to map your objects
-            CreateMap<CustomerDto, Customer>().ForMember(dst => dst.Id, act => act.Ignore());
+            CreateMap<CustomerDto, Customer>();
             CreateMap<Customer, CustomerDto>();
 
             CreateMap<Customer, EF.Customer>();

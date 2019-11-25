@@ -36,9 +36,26 @@ namespace AlintaEnergy.API.Controllers
          
         }
 
+        [HttpGet()]
+        public ActionResult<CustomerDto> GetAll()
+        {
+            try
+            {
+                var retVal = _customerService.GetAllCustomer();
+                return Ok(retVal);
+            }
+            catch (Exception ex)
+            {
+
+                return BadRequest(ex);
+            }
+
+        }
+
+
         // POST api/values
         [HttpPost]
-        public IActionResult Post([FromBody] CustomerDto customer)
+        public IActionResult Create([FromBody] CustomerDto customer)
         {
             try
             {
@@ -52,16 +69,46 @@ namespace AlintaEnergy.API.Controllers
             }
         }
 
-        //// PUT api/values/5
-        //[HttpPut("{id}")]
-        //public void Put(int id, [FromBody] string value)
-        //{
-        //}
+
+
+
+        // POST api/values
+        [HttpPost("search")]
+        public IActionResult Search(string searchText)
+        {
+            try
+            {
+                var retVal = _customerService.GetCustomerBySearchText(searchText);
+                return Ok(retVal);
+            }
+            catch (Exception ex)
+            {
+
+                return BadRequest(ex);
+            }
+        }
+
+        // PUT api/values
+        [HttpPut()]
+        public void Put([FromBody] CustomerDto newCustomerData)
+        {
+            var h = _customerService.Update(newCustomerData);
+        }
 
         // DELETE api/values/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public IActionResult Delete(int id)
         {
+            try
+            {
+                var retVal = _customerService.RemoveCustomer(id);
+                return Ok(retVal);
+            }
+            catch (Exception ex)
+            {
+
+                return BadRequest(ex);
+            }
         }
     }
 }

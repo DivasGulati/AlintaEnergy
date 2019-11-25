@@ -8,7 +8,9 @@ namespace AlintaEnergy.Application.Abstractions.Repositries
     {
         IQueryable<Customer> GetAllCustomer();
         bool CreateCustomer(Customer customer);
-        bool RemoveCustomer();
+        bool RemoveCustomer(int id);
+
+        bool UpdateCustomer(Customer customer);
 
         Customer GetCustomer(int id);
         IQueryable<Customer> GetCustomerBySearchText(string searchText);

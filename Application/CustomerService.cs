@@ -4,6 +4,7 @@ using AlintaEnergy.Application.Dto;
 using AlintaEnergy.Core.DomainModel;
 using AutoMapper;
 using System;
+using System.Linq;
 using System.Collections.Generic;
 using System.Text;
 
@@ -11,8 +12,7 @@ namespace AlintaEnergy.Application
 {
     public class CustomerService : ICustomerService
     {
-        ICustomerRepositry _customerRepo;
-
+        private readonly ICustomerRepositry _customerRepo;
         private readonly IMapper _mapper;
 
         public CustomerService(ICustomerRepositry customerRepo, IMapper mapper)
@@ -30,7 +30,9 @@ namespace AlintaEnergy.Application
 
         public IEnumerable<CustomerDto> GetAllCustomer()
         {
-            throw new NotImplementedException();
+            var results = _customerRepo.GetAllCustomer().ToList();
+            var customers = _mapper.Map<List<CustomerDto>>(results);
+            return customers;
         }
 
         public CustomerDto GetCustomer(int id)
@@ -38,18 +40,27 @@ namespace AlintaEnergy.Application
             var customer = _customerRepo.GetCustomer(id);
             var customerDTO = _mapper.Map<CustomerDto>(customer);
             return customerDTO;
-
-
         }
 
         public IEnumerable<CustomerDto> GetCustomerBySearchText(string searchText)
         {
-            throw new NotImplementedException();
+            var results = _customerRepo.GetCustomerBySearchText(searchText).ToList();
+            var customers = _mapper.Map<List<CustomerDto>>(results);
+            return customers;
+
         }
 
         public bool RemoveCustomer(int id)
         {
-            throw new NotImplementedException();
+            var retVal = _customerRepo.RemoveCustomer(id);
+            return retVal;
+        }
+
+        public bool Update(CustomerDto customer)
+        {
+            var domainModel = _mapper.Map<CustomerDto, Customer>(customer);
+           var retVal =  _customerRepo.UpdateCustomer(domainModel);
+            return retVal;
         }
     }
 }

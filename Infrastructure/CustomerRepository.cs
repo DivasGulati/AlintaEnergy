@@ -35,10 +35,19 @@ namespace AlintaEnergy.Infrastructure
         }
 
         public IQueryable<Customer> GetAllCustomer()
-        {
-            var customers = from x in _sampleInMemoryDbContext.Customers
-                            select x;
-            return null;
+        {            
+
+            var customerDomainModel = (from x in _sampleInMemoryDbContext.Customers                                       
+                                       select new Customer
+                                       {
+                                           Id = x.Id,
+                                           FirstName = x.FirstName,
+                                           LastName = x.LastName,
+                                           DateOfBirth = x.DateOfBirth
+
+                                       });
+
+            return customerDomainModel;
 
         }
 
@@ -56,12 +65,41 @@ namespace AlintaEnergy.Infrastructure
 
         public IQueryable<Customer> GetCustomerBySearchText(string searchText)
         {
-            throw new NotImplementedException();
+            var customerDomainModel = (from x in _sampleInMemoryDbContext.Customers
+                                       where x.FirstName.Contains(searchText) || x.LastName.Contains(searchText)
+                                       select new Customer
+                                       {
+                                           Id = x.Id,
+                                           FirstName = x.FirstName,
+                                           LastName = x.LastName,
+                                           DateOfBirth = x.DateOfBirth
+
+                                       });
+
+
+            return customerDomainModel;
         }
 
-        public bool RemoveCustomer()
+        public bool RemoveCustomer(int id)
         {
-            throw new NotImplementedException();
+            var success = false;
+
+            var customerEntityModel = (from x in _sampleInMemoryDbContext.Customers
+                                       where x.Id == id
+                                       select x).FirstOrDefault();
+
+            _sampleInMemoryDbContext.Customers.Remove(customerEntityModel);
+            var numberOfItemsDeleted= _sampleInMemoryDbContext.SaveChanges();
+            if (numberOfItemsDeleted == 1) success = true;
+
+            return success;
+
+        }
+
+        public  bool UpdateCustomer(Customer customer)
+        {
+            _sampleInMemoryDbContext.Entry(_sampleInMemoryDbContext.Customers.FirstOrDefault(x => x.Id == customer.Id)).CurrentValues.SetValues(customer);
+            return (_sampleInMemoryDbContext.SaveChanges()) > 0;
         }
     }
 }
