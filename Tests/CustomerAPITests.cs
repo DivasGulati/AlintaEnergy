@@ -44,7 +44,7 @@ namespace Customer.Tests
 
 
         [TestMethod]
-        public void CUSTOMER_API_REMOVECUSTOMER_FIRSTNAME_JOHN_LASTNAME_MARTIN()
+        public void CUSTOMER_API_REMOVE_CUSTOMER_FIRSTNAME_JOHN_LASTNAME_MARTIN()
         {
             //Arrange
             var mapper = _serviceProvider.GetService<IMapper>();
@@ -83,7 +83,7 @@ namespace Customer.Tests
 
             ///Act
             var customerService = _serviceProvider.GetService<ICustomerService>();
-            var results = customerService.GetCustomerBySearchText(searchText).ToList();
+            var results = customerService.SearchCustomer(searchText).ToList();
 
             //Assert
             Assert.AreEqual<int>(results.Count, 2);
@@ -104,7 +104,7 @@ namespace Customer.Tests
 
             ///Act
             var customerService = _serviceProvider.GetService<ICustomerService>();
-            var john = customerService.GetCustomerBySearchText(searchText).FirstOrDefault();
+            var john = customerService.SearchCustomer(searchText).FirstOrDefault();
             bool retVal = false;
             if (john != null)
             {

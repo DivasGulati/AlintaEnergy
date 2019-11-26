@@ -42,9 +42,9 @@ namespace AlintaEnergy.Application
             return customerDTO;
         }
 
-        public IEnumerable<CustomerDto> GetCustomerBySearchText(string searchText)
+        public IEnumerable<CustomerDto> SearchCustomer(string searchText)
         {
-            var results = _customerRepo.GetCustomerBySearchText(searchText).ToList();
+            var results = _customerRepo.SearchCustomer(searchText).ToList();
             var customers = _mapper.Map<List<CustomerDto>>(results);
             return customers;
 

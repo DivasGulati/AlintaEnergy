@@ -72,7 +72,7 @@ namespace AlintaEnergy.API.Controllers
         {
             try
             {
-                var retVal = _customerService.GetCustomerBySearchText(searchText);
+                var retVal = _customerService.SearchCustomer(searchText);
                 return Ok(retVal);
             }
             catch (Exception ex)

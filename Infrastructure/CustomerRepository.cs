@@ -63,7 +63,7 @@ namespace AlintaEnergy.Infrastructure
 
         }
 
-        public IQueryable<Customer> GetCustomerBySearchText(string searchText)
+        public IQueryable<Customer> SearchCustomer(string searchText)
         {
             var customerDomainModel = (from x in _sampleInMemoryDbContext.Customers
                                        where x.FirstName.Contains(searchText, StringComparison.OrdinalIgnoreCase) || x.LastName.Contains(searchText, StringComparison.OrdinalIgnoreCase)
