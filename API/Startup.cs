@@ -51,7 +51,7 @@ namespace AlintaEnergy.API
             services.AddSwaggerGen(c =>
             {
                 // new OpenApiInfo { Title = "My API", Version = "v1" }
-                c.SwaggerDoc("v1", new Swashbuckle.AspNetCore.Swagger.Info() { Title = "My API", Version = "v1" });
+                c.SwaggerDoc("v1", new Swashbuckle.AspNetCore.Swagger.Info() { Title = "Customer API", Version = "v1" });
             });
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
@@ -73,7 +73,7 @@ namespace AlintaEnergy.API
             app.UseSwagger();
             app.UseSwaggerUI(c =>
             {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Customer API V1");
             });
 
             app.UseHttpsRedirection();

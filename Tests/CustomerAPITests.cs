@@ -73,5 +73,53 @@ namespace Customer.Tests
             Assert.AreEqual<string>(customerBeforeDeleting.FirstName, "John");
             Assert.AreEqual<CustomerDto>(customer, null);           
         }
+
+
+        [TestMethod]
+        public void CUSTOMER_API_SEARCH_CUSTOMER_FIRSTNAME_RETURNS_2()
+        {
+            //Arrange
+            string searchText = "martin";
+
+            ///Act
+            var customerService = _serviceProvider.GetService<ICustomerService>();
+            var results = customerService.GetCustomerBySearchText(searchText).ToList();
+
+            //Assert
+            Assert.AreEqual<int>(results.Count, 2);
+            foreach(var customer in results)
+            {
+                var result = customer.FirstName.Contains("martin", StringComparison.OrdinalIgnoreCase) || customer.LastName.Contains("martin", StringComparison.OrdinalIgnoreCase);
+                Assert.AreEqual<bool>(result, true);
+            }
+        }
+
+
+        [TestMethod]
+        public void CUSTOMER_API_UPDATE_CUSTOMER_JOHN_MARTIN_TO_ROCKY_MARTIN()
+        {
+            //Arrange
+            string searchText = "john";
+            var mapper = _serviceProvider.GetService<IMapper>();
+
+            ///Act
+            var customerService = _serviceProvider.GetService<ICustomerService>();
+            var john = customerService.GetCustomerBySearchText(searchText).FirstOrDefault();
+            bool retVal = false;
+            if (john != null)
+            {
+                john.FirstName = "Ricky";
+                retVal = customerService.Update(john);
+            }
+
+            //Assert
+            Assert.AreNotEqual<CustomerDto>(john, null);
+            Assert.AreEqual<bool>(retVal, true);
+            var updatedCustomer = customerService.GetCustomer(john.Id.Value);
+            Assert.AreEqual<string>(updatedCustomer.FirstName, "Ricky");
+
+
+
+        }
     }
 }

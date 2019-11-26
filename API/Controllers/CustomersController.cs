@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using AlintaEnergy.Application.Abstractions.Services;
 using AlintaEnergy.Application.Dto;
 using Microsoft.AspNetCore.Mvc;
@@ -19,7 +16,7 @@ namespace AlintaEnergy.API.Controllers
             _customerService = customerService;
         }
 
-        // GET api/values/5
+        // GET api/Customers/5
         [HttpGet("{id}")]
         public ActionResult<CustomerDto> Get(int id)
         {
@@ -32,8 +29,8 @@ namespace AlintaEnergy.API.Controllers
             {
 
                 return BadRequest(ex);
-            }           
-         
+            }
+
         }
 
         [HttpGet()]
@@ -46,33 +43,30 @@ namespace AlintaEnergy.API.Controllers
             }
             catch (Exception ex)
             {
-
                 return BadRequest(ex);
             }
 
         }
 
 
-        // POST api/values
+        // POST api/Customers
         [HttpPost]
         public IActionResult Create([FromBody] CustomerDto customer)
         {
             try
             {
-               var retVal =  _customerService.CreateCustomer(customer);
+                var retVal = _customerService.CreateCustomer(customer);
                 return Ok(retVal);
             }
             catch (Exception ex)
             {
-                
+
                 return BadRequest(ex);
             }
         }
 
 
-
-
-        // POST api/values
+        // POST api/Customers/search
         [HttpPost("search")]
         public IActionResult Search(string searchText)
         {
@@ -88,14 +82,23 @@ namespace AlintaEnergy.API.Controllers
             }
         }
 
-        // PUT api/values
+        // PUT api/Customers
         [HttpPut()]
-        public void Put([FromBody] CustomerDto newCustomerData)
+        public IActionResult Put([FromBody] CustomerDto newCustomerData)
         {
-            var h = _customerService.Update(newCustomerData);
+            try
+            {
+                var retVal = _customerService.Update(newCustomerData);
+                return Ok(retVal);
+            }
+            catch (Exception ex)
+            {
+
+                return BadRequest(ex);
+            }
         }
 
-        // DELETE api/values/5
+        // DELETE api/Customers/5
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {

@@ -56,6 +56,8 @@ namespace AlintaEnergy.IntergrationTests
                 DateOfBirth = new DateTime(1975, 1, 1)
             };
 
+
+
             var ryan = new CustomerDto()
             {
                 FirstName = "Ryan",
@@ -67,13 +69,21 @@ namespace AlintaEnergy.IntergrationTests
             var roy = new CustomerDto()
             {
                 FirstName = "Roy",
-                LastName = "Sidler",
+                LastName = "Vilton",
                 DateOfBirth = new DateTime(1999, 10, 1)
+            };
+
+            var rick = new CustomerDto()
+            {
+                FirstName = "Ricky",
+                LastName = "Martin",
+                DateOfBirth = new DateTime(1975, 1, 1)
             };
 
             customerService.CreateCustomer(john);
             customerService.CreateCustomer(ryan);
             customerService.CreateCustomer(roy);
+            customerService.CreateCustomer(rick);
 
         }
     }
